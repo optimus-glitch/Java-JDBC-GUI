@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 
 class Gui extends JFrame implements ActionListener {
 
-    JLabel winTitle, fnameLabel, lnameLabel, emaiLabel, passwordLabel, phoneLabel;
+    JLabel fnameLabel, lnameLabel, emaiLabel, passwordLabel, phoneLabel, signUpLabel;
     JTextField fnameField, lnameField, emailField, phoneField;
-    JButton registerButton, cancelButton;
+    JButton registerButton, cancelButton, userButton, adminButton;
     JPasswordField passwordField;
     final static String url = "jdbc:mysql://localhost:3306/students";
 
@@ -17,7 +17,78 @@ class Gui extends JFrame implements ActionListener {
     Font lableFont = new Font("JetBrainsMono Nerd Font", Font.BOLD, 17);
     Font buttonFont = new Font("JetBrainsMono Nerd Font", Font.BOLD, 14);
 
+    JLabel winTitle = new JLabel("EVENT REGISTRATION");
+
     public Gui() {
+        setVisible(true);
+        setSize(420, 420);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setLayout(null);
+
+        // Window Title
+        winTitle.setBounds(35, 20, 350, 30);
+        winTitle.setFont(myFont);
+        winTitle.setForeground(new Color(0, 255, 0));
+
+        // Labels
+        emaiLabel = new JLabel("Email");
+        emaiLabel.setBounds(45, 90, 100, 20);
+        emaiLabel.setForeground(new Color(0, 255, 0));
+        emaiLabel.setFont(lableFont);
+
+        passwordLabel = new JLabel("Password");
+        passwordLabel.setBounds(45, 140, 100, 20);
+        passwordLabel.setForeground(new Color(0, 255, 0));
+        passwordLabel.setFont(lableFont);
+
+        // Input Fields
+        emailField = new JTextField();
+        emailField.setBorder(null);
+        emailField.setBounds(150, 90, 200, 20);
+
+        passwordField = new JPasswordField();
+        passwordField.setBorder(null);
+        passwordField.setBounds(150, 140, 200, 20);
+
+        
+        // Buttons
+        userButton = new JButton("login");
+        userButton.setFont(buttonFont);
+        userButton.setBorder(null);
+        userButton.setFocusable(false);
+        userButton.setBounds(110, 220, 200, 30);
+        userButton.setHorizontalTextPosition(JButton.CENTER);
+        userButton.addActionListener(this);
+
+        // Login-as
+        signUpLabel = new JLabel("Don't have an account?");
+        signUpLabel.setBounds(120, 270, 220, 30);
+        signUpLabel.setForeground(new Color(0, 255, 0));
+        signUpLabel.setFont(buttonFont);
+        
+        adminButton = new JButton("register");
+        adminButton.setFont(buttonFont);
+        adminButton.setBorder(null);
+        adminButton.setHorizontalTextPosition(JButton.CENTER);
+        adminButton.setFocusable(false);
+        adminButton.setBounds(110, 310, 200, 30);
+        adminButton.addActionListener(this);
+
+
+        add(winTitle);
+        add(emaiLabel);
+        add(emailField);
+        add(passwordLabel);   
+        add(passwordField);   
+        add(userButton);
+        add(signUpLabel);
+        add(adminButton);
+        getContentPane().setBackground(new Color(0x123456));
+    }
+
+    public void registerEvent() {
         setVisible(true);
         setSize(420, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
