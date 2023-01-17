@@ -9,7 +9,7 @@ class Gui extends JFrame implements ActionListener {
 
     JLabel fnameLabel, lnameLabel, emaiLabel, passwordLabel, phoneLabel, signUpLabel;
     JTextField fnameField, lnameField, emailField, phoneField;
-    JButton registerButton, cancelButton, userButton, adminButton;
+    JButton registerButton, cancelButton, logonButton, registrationButton;
     JPasswordField passwordField;
     final static String url = "jdbc:mysql://localhost:3306/students";
 
@@ -54,13 +54,13 @@ class Gui extends JFrame implements ActionListener {
 
         
         // Buttons
-        userButton = new JButton("login");
-        userButton.setFont(buttonFont);
-        userButton.setBorder(null);
-        userButton.setFocusable(false);
-        userButton.setBounds(110, 220, 200, 30);
-        userButton.setHorizontalTextPosition(JButton.CENTER);
-        userButton.addActionListener(this);
+        logonButton = new JButton("login");
+        logonButton.setFont(buttonFont);
+        logonButton.setBorder(null);
+        logonButton.setFocusable(false);
+        logonButton.setBounds(110, 220, 200, 30);
+        logonButton.setHorizontalTextPosition(JButton.CENTER);
+        logonButton.addActionListener(this);
 
         // Login-as
         signUpLabel = new JLabel("Don't have an account?");
@@ -68,13 +68,13 @@ class Gui extends JFrame implements ActionListener {
         signUpLabel.setForeground(new Color(0, 255, 0));
         signUpLabel.setFont(buttonFont);
         
-        adminButton = new JButton("register");
-        adminButton.setFont(buttonFont);
-        adminButton.setBorder(null);
-        adminButton.setHorizontalTextPosition(JButton.CENTER);
-        adminButton.setFocusable(false);
-        adminButton.setBounds(110, 310, 200, 30);
-        adminButton.addActionListener(this);
+        registrationButton = new JButton("register");
+        registrationButton.setFont(buttonFont);
+        registrationButton.setBorder(null);
+        registrationButton.setHorizontalTextPosition(JButton.CENTER);
+        registrationButton.setFocusable(false);
+        registrationButton.setBounds(110, 310, 200, 30);
+        registrationButton.addActionListener(this);
 
 
         add(winTitle);
@@ -82,9 +82,9 @@ class Gui extends JFrame implements ActionListener {
         add(emailField);
         add(passwordLabel);   
         add(passwordField);   
-        add(userButton);
+        add(logonButton);
         add(signUpLabel);
-        add(adminButton);
+        add(registrationButton);
         getContentPane().setBackground(new Color(0x123456));
     }
 
@@ -219,6 +219,11 @@ class Gui extends JFrame implements ActionListener {
 
         if (e.getSource() == cancelButton) {
             this.dispose();
+        }
+
+        if (e.getSource() == registrationButton) {
+            this.dispose();
+            registerEvent();
         }
     }
 
